@@ -1,4 +1,8 @@
 #include <array>
+#include <string>
+
+#ifndef BOARD
+#define BOARD
 
 class Board{
     
@@ -14,3 +18,5 @@ class Board{
     std::string get_mark(int cell);
 
 };
+
+#endif

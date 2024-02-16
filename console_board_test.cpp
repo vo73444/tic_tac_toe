@@ -1,7 +1,6 @@
 #include <iostream>
-//#include <cassert>
-#include <array>
 #include "console_board.hpp"
+#include <string>
 
 using namespace std;
 
@@ -17,9 +16,6 @@ int main(){
 
     cout << test_board;
 
-    /*cout << "Starting test ... \n";
-
-    cout << "Test Succeded!\n";*/
 
     return 0;
 }

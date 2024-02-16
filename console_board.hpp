@@ -1,4 +1,6 @@
 #include "board.hpp"
+#ifndef CONSOLE_BOARD_CREATOR
+#define CONSOLE_BOARD_CREATOR
 
 class ConsoleBoardCreator{
     Board *board;
@@ -8,3 +10,5 @@ class ConsoleBoardCreator{
 
     std::string formatted_board();
 };
+
+#endif

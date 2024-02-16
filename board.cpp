@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include "board.hpp"
+#include <string>
 
 using namespace std;
 
