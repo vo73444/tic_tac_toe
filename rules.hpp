@@ -15,6 +15,8 @@ class Rules{
 
     std::string row(int cell1, int cell2, int cell3);
 
+    bool check_tie();
+
 };
 
 #endif

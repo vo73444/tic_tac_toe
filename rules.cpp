@@ -1,5 +1,6 @@
 #include "rules.hpp"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -17,8 +18,11 @@ bool Rules::validate_input(int input){
 }
 
 bool Rules::in_progress(){
+    if(check_tie()){
+        return false;
+    }
 
-    if(row(1, 2, 3) != " "){
+    else if(row(1, 2, 3) != " "){
         return false;
     }
     else if(row(4, 5, 6) != " "){
@@ -42,9 +46,7 @@ bool Rules::in_progress(){
     else if(row(3, 5, 7) != " "){
         return false;
     }
-    else {
         return true;
-    }
 }
 
 string Rules::row(int cell1, int cell2, int cell3){
@@ -55,3 +57,14 @@ string Rules::row(int cell1, int cell2, int cell3){
         return " ";
     }
 }
+
+bool Rules::check_tie(){
+    for(int i = 1; i <= 9; i++){
+        if(board->get_mark(i) == " "){
+            return false;
+        }
+    }
+
+    return true;
+}
+

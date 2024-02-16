@@ -15,12 +15,12 @@ void Game::start(){
     
     while(rules->in_progress()){
         cout << "\n" << creator->formatted_board();
-        cout << "Select a cell: ";
+        cout << "Select a cell(1-9): ";
         cin >> user_input;
 
         while(!(rules->validate_input(stoi(user_input)))){
             cout << "Invalid cell\n";
-            cout << "Please enter another cell: ";
+            cout << "Please enter another cell(1-9): ";
             cin >> user_input;
         }
 
@@ -34,15 +34,25 @@ void Game::start(){
         }
     }
 
-    if(player == 'X'){
-        player = 'O';
+    if(rules->check_tie()){
+        cout << creator->formatted_board();
+        cout << "It's a tie... \n";
+
+        return;
     }
+    
     else{
-        player = 'X';
+        if(player == 'X'){
+            player = 'O';
+        }
+        else{
+            player = 'X';
+        }
+
+        cout << creator->formatted_board();
+
+        cout << "Player " << player << " wins!!\n";
     }
 
-    cout << creator->formatted_board();
-
-    cout << "Player " << player << " wins!!\n";
 }
 
