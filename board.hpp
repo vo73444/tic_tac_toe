@@ -17,6 +17,8 @@ class Board{
 
     std::string get_mark(int cell);
 
+    void create_empty_board();
+
 };
 
 #endif
