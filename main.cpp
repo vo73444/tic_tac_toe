@@ -1,32 +1,42 @@
 #include <iostream>
 #include "game.hpp"
 #include "human_player.hpp"
+#include "computer_player.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
 int main(){
 
     Board board;
-    Board *board_ptr = &board;
+    ConsoleBoardCreator creator = ConsoleBoardCreator(&board);
+    Rules rules = Rules(&board);
 
-    ConsoleBoardCreator creator = ConsoleBoardCreator(board_ptr);
-    ConsoleBoardCreator *creator_ptr = &creator;
+    Menu menu = Menu();
 
-    Rules rules = Rules(board_ptr);
-    Rules *rules_ptr = &rules;
+    HumanPlayer player1 = HumanPlayer(&board, &rules, 'X');
 
-    HumanPlayer player1 = HumanPlayer(board_ptr, rules_ptr, 'X');
-    HumanPlayer player2 = HumanPlayer(board_ptr, rules_ptr, 'O');
+    if(menu.get_option() == 1){
+        HumanPlayer player2 = HumanPlayer(&board, &rules, 'O');
+
+        Game game = Game(&board, &rules, &creator, &player1, &player2);
+        cout << endl;
+
+        game.start(); 
+
+    }
+    else{
+        ComputerPlayer player2 = ComputerPlayer(&board, 'O');
+        Game game = Game(&board, &rules, &creator, &player1, &player2);
+
+        cout << endl;
+
+        game.start();
+
+    }
     
-
-    Game game = Game(board_ptr, rules_ptr, creator_ptr, &player1, &player2);
-
-    cout << endl;
-
-    game.start();
-
     return 0;
 
 }
 
-// g++ -std=c++11 board.cpp console_board.cpp game.cpp human_player.cpp main.cpp rules.cpp exit_menu.cpp
+// g++ -std=c++11 board.cpp console_board.cpp game.cpp human_player.cpp main.cpp rules.cpp computer_player.cpp menu.cpp

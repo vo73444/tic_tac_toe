@@ -22,30 +22,11 @@ bool Rules::in_progress(){
         return false;
     }
 
-    else if(row(1, 2, 3) != " "){
+    else if(check_winner()){
         return false;
     }
-    else if(row(4, 5, 6) != " "){
-        return false;
-    }
-    else if(row(7, 8, 9) != " "){
-         return false;
-    }
-    else if(row(1, 4, 7) != " "){
-         return false;
-    }
-    else if(row(2, 5, 8) != " "){
-         return false;
-    }
-    else if(row(3, 6, 9) != " "){
-         return false;
-    }
-    else if(row(1, 5, 9) != " "){
-        return false;
-    }
-    else if(row(3, 5, 7) != " "){
-        return false;
-    }
+
+
         return true;
 }
 
@@ -56,6 +37,36 @@ string Rules::row(int cell1, int cell2, int cell3){
     else{
         return " ";
     }
+}
+
+bool Rules::check_winner(){
+    if(row(1, 2, 3) != " "){
+        return true;
+    }
+    else if(row(4, 5, 6) != " "){
+        return true;
+    }
+    else if(row(7, 8, 9) != " "){
+         return true;
+    }
+    else if(row(1, 4, 7) != " "){
+         return true;
+    }
+    else if(row(2, 5, 8) != " "){
+         return true;
+    }
+    else if(row(3, 6, 9) != " "){
+         return true;
+    }
+    else if(row(1, 5, 9) != " "){
+        return true;
+    }
+    else if(row(3, 5, 7) != " "){
+        return true;
+    }
+
+    return false;
+
 }
 
 bool Rules::check_tie(){

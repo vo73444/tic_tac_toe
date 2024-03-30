@@ -17,6 +17,8 @@ class Rules{
 
     bool check_tie();
 
+    bool check_winner();
+
 };
 
 #endif

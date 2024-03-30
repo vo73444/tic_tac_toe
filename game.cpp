@@ -1,7 +1,7 @@
 #include <iostream>
 #include "game.hpp"
 #include "human_player.hpp"
-#include "exit_menu.hpp"
+// #include "exit_menu.hpp"
 
 using namespace std;
 
@@ -20,62 +20,52 @@ void Game::restart(){
 }
 
 void Game::start(){
-    // string user_input = "";
-    char player = 'X';
-    
-    while(rules->in_progress()){
-        cout << creator->formatted_board() << endl;
-        // cout << "Select a cell(1-9): ";
-        // cin >> user_input;
 
-        // while(!(rules->validate_input(stoi(user_input)))){
-        //     cout << creator->formatted_board();
-        //     cout << "Invalid cell\n";
-        //     cout << "Please enter another cell(1-9): ";
-        //     cin >> user_input;
-        // }
+        bool replay = true;
+        string user_input;
 
-        // board->make_move(stoi(user_input), player);
+    while(replay){
 
-        // if(player == 'X'){
-        //   player = 'O';
-        // }
-        // else{
-        //    player = 'X';
-        // }
+        while(rules->in_progress()){
 
-        current_player->move();
-        switch_player();
+            cout << creator->formatted_board() << endl;
+            current_player->move();
+            switch_player();
 
-        cout << endl;
-    }
+            cout << endl;
+            
+        }
 
-    if(rules->check_tie()){
-        cout << creator->formatted_board();
-        cout << "It's a tie... \n";
-
-        return;
-    }
-    
-    else{
-        // if(current_player == player1){
-        //     player = 'O';
-        // }
-        // else{
-        //     player = 'X';
-        // }
-
-        // cout << creator->formatted_board();
-
-        // cout << "Player " << player << " wins!!\n";
-
-        switch_player();
+        if(rules->check_winner()){
+            switch_player();
         
-        cout << creator->formatted_board();
-        cout << "Player " << current_player->get_symbol() << " wins!!\n\n";
+            cout << creator->formatted_board();
+            cout << "Player " << current_player->get_symbol() << " wins!!\n\n";
+
+        }
+            
+        else{
+            cout << creator->formatted_board();
+            cout << "It's a tie... \n\n";
+
+        }
+
+        cout << "Enter '1' to play again, otherwise any other key to exit...\n";
+        cin >>user_input;
+
+        if(user_input != "1"){
+            cout <<"\nThanks for playing!!!\n";
+            replay = false;
+        }
+
+        else{
+
+            restart();
+        }
+            
     }
 
-    ExitMenu(this).execute();
+    // ExitMenu(this).execute();
 
 }
 
