@@ -8,11 +8,13 @@ using namespace std;
 
 int main(){
 
-    Board board;
+    Menu menu = Menu();
+
+    Board board = Board(menu.get_option2());
     ConsoleBoardCreator creator = ConsoleBoardCreator(&board);
     Rules rules = Rules(&board);
 
-    Menu menu = Menu();
+
 
     HumanPlayer player1 = HumanPlayer(&board, &rules, 'X');
 

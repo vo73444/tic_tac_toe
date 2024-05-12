@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
 
-    Board board;
+    Board board = Board(4);
     board.make_move(3, 'X');
     Board *board_ptr = &board;
 

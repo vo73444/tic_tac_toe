@@ -13,7 +13,7 @@ class Rules{
 
     bool in_progress();
 
-    std::string row(int cell1, int cell2, int cell3);
+    std::string row(int cell1, int cell2, int cell3, int cell4 = 0);
 
     bool check_tie();
 

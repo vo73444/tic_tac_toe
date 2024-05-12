@@ -14,7 +14,7 @@ void ComputerPlayer::move(){
 
     while(running){
 
-        random_num = (rand() % 9) + 1;
+        random_num = (rand() % (board->get_rows() * board->get_rows())) + 1;
 
         if(board->get_mark(random_num) == " "){
             board->make_move(random_num, symbol);
